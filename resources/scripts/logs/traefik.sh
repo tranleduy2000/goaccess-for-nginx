@@ -102,7 +102,8 @@ function traefik(){
         echo "Found (${goan_log_count}) proxy logs..."
     else
         echo "No access.log found. Creating an empty log file..."
-        touch "${goan_log_path}/access.log"
+        #touch "${goan_log_path}/access.log"
+        exit 2
     fi
 
     #additonal config settings

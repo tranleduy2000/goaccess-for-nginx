@@ -76,13 +76,13 @@ if [[ -z "${LOG_TYPE}" || "${LOG_TYPE}" == "NPM" || "${LOG_TYPE}" == "NPM+R"  ||
         npm_redirect
     fi
 elif [[ "${LOG_TYPE}" == "TRAEFIK" ]]; then
-    traefik
+    traefik  || exit 2
 elif [[ "${LOG_TYPE}" == "NCSA_COMBINED" ]]; then
-    ncsa_combined
+    ncsa_combined || exit 2
 elif [[ "${LOG_TYPE}" == "CUSTOM" ]]; then
-    custom
+    custom  || exit 2
 elif [[ "${LOG_TYPE}" == "NGINX_ACCESS" ]]; then
-    nginx_access
+    nginx_access  || exit 2
 fi
 # END PROXY LOGS
 

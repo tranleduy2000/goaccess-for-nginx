@@ -59,6 +59,7 @@ function nginx_access(){
 
     goan_log_count=0
     goan_archive_log_count=0
+    access_log_file_name=${ACCESS_LOG_FILE_NAME:-access.log}
 
     echo -e "\n#GOAN_NGINX ACCESS_LOG_FILES" >> ${goan_config}
     if [[ -d "${goan_log_path}" ]]; then
@@ -66,7 +67,7 @@ function nginx_access(){
         echo -e "\n\tAdding proxy logs..."
         IFS=$'\n'
 
-        for file in $(find "${goan_log_path}" -name 'access.log' ! -name "error.log");
+        for file in $(find "${goan_log_path}" -name "${access_log_file_name}" ! -name "error.log");
         do
             if [ -f $file ]
             then

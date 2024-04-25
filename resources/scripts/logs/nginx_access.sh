@@ -27,14 +27,22 @@ function nginx_access_init(){
 }
 
 function nginx_access_goaccess_config(){
+    GOACCESS_TIME_FORMAT=${GOACCESS_TIME_FORMAT:'-%T'}
+    GOACCESS_DATE_FORMAT=${GOACCESS_DATE_FORMAT:'%d/%b/%Y'}
+    GOACCESS_LOG_FORMAT=${GOACCESS_LOG_FORMAT:'%h %^[%d:%t %^] "%r" %s %b "%R" "%u"'}
+
+    echo "GOACCESS_TIME_FORMAT=${GOACCESS_TIME_FORMAT}"
+    echo "GOACCESS_DATE_FORMAT=${GOACCESS_DATE_FORMAT}"
+    echo "GOACCESS_LOG_FORMAT=${GOACCESS_LOG_FORMAT}"
+
     echo -e "\n\n\n" >> ${goan_config}
     echo "######################################" >> ${goan_config}
     echo "# ${goan_version}" >> ${goan_config}
     echo "# GOAN_PROXY_CONFIG" >> ${goan_config}
     echo "######################################" >> ${goan_config}
-    echo "time-format %T" >> ${goan_config}
-    echo "date-format %d/%b/%Y" >> ${goan_config}
-    echo "log-format %h %^[%d:%t %^] \"%r\" %s %b \"%R\" \"%u\"" >> ${goan_config}
+    echo "time-format ${GOACCESS_TIME_FORMAT}" >> ${goan_config}
+    echo "date-format ${GOACCESS_DATE_FORMAT}" >> ${goan_config}
+    echo "log-format ${GOACCESS_LOG_FORMAT}" >> ${goan_config}
     echo "port 7890" >> ${goan_config}
     echo "real-time-html true" >> ${goan_config}
     echo "output ${nginx_html}" >> ${goan_config}

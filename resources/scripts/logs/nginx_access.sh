@@ -27,9 +27,9 @@ function nginx_access_init(){
 }
 
 function nginx_access_goaccess_config(){
-    GOACCESS_TIME_FORMAT=${GOACCESS_TIME_FORMAT:'-%T'}
-    GOACCESS_DATE_FORMAT=${GOACCESS_DATE_FORMAT:'%d/%b/%Y'}
-    GOACCESS_LOG_FORMAT=${GOACCESS_LOG_FORMAT:'%h %^[%d:%t %^] "%r" %s %b "%R" "%u"'}
+    GOACCESS_TIME_FORMAT=${GOACCESS_TIME_FORMAT:-'%T'}
+    GOACCESS_DATE_FORMAT=${GOACCESS_DATE_FORMAT:-'%d/%b/%Y'}
+    GOACCESS_LOG_FORMAT=${GOACCESS_LOG_FORMAT:-'%h %^[%d:%t %^] "%r" %s %b "%R" "%u"'}
 
     echo "GOACCESS_TIME_FORMAT=${GOACCESS_TIME_FORMAT}"
     echo "GOACCESS_DATE_FORMAT=${GOACCESS_DATE_FORMAT}"
